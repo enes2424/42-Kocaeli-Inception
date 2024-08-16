@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: requirements/nginx
+    image: nginx_image
+    env_file:
+      - .env
+    container_name: nginx_container
+    ports:
+      - "443:443"
+    networks:
+      - inception
+    restart: always
+
+networks:
+  inception:
