@@ -6,8 +6,9 @@ RUN apt-get update && \
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
+
 # Create SSL certificates
 RUN mkdir -p /etc/nginx/ssl && \
-    openssl req -x509 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt -days 365 -nodes -subj "/CN=localhost"
+    openssl req -x509 -newkey rsa:4096 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt -days 365 -nodes -subj "/CN="
 
 CMD ["nginx", "-g", "daemon off;"]
