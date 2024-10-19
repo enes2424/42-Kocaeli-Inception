@@ -18,4 +18,6 @@ RUN chmod +x /wordpress.sh
 WORKDIR /var/www/html
 
 ENTRYPOINT ["/wordpress.sh"]
-CMD ["php-fpm7.4", "--nodaemonize"]
+
+CMD ["/usr/sbin/php-fpm7.4", "--nodaemonize"]
+

@@ -17,6 +17,7 @@ services:
       - .env
     depends_on:
       - mariadb
+      - nginx
     volumes:
       - wordpress:/var/www/html
     networks:
@@ -31,7 +32,7 @@ services:
     ports:
       - "443:443"
     depends_on:
-      - wordpress
+      - mariadb
     volumes:
       - wordpress:/var/www/html
     networks:

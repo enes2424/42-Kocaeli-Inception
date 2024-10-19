@@ -8,8 +8,9 @@ chown -R www-data:www-data /run/php
 touch /run/php/php7.4-fpm.pid
 
 # Eğer wp-config.php dosyası yoksa WordPress'i kur
-if [ ! -f /var/www/html/wp-config.php ]; then
-    rm -rf /var/www/html/*
+if [ -f /var/www/html/wp-config.php ]; then
+
+    rm -rf ./*
 
     # WordPress çekirdeğini indir
     wp core download --allow-root
@@ -34,8 +35,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp user create --allow-root \
         ${WORDPRESS_USER} \
         ${WORDPRESS_EMAIL} \
-        --user_pass=${WORDPRESS_PASSWORD}
+        --user_pass=${WORDPRESS_EMAIL}
 fi
 
-# PHP-FPM başlat
-exec "$@"
+exec $@

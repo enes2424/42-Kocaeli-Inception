@@ -9,4 +9,3 @@ COPY /tools/nginx.sh /nginx.sh
 RUN chmod +x /nginx.sh
 
 ENTRYPOINT ["/nginx.sh"]
-CMD ["nginx", "-g", "daemon off;"]
