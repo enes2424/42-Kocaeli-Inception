@@ -1,7 +1,7 @@
 services:
   mariadb:
     container_name: mariadb
-    build: ./requirements/mariadb
+    build: requirements/mariadb
     env_file:
       - .env
     volumes:
@@ -12,7 +12,7 @@ services:
 
   wordpress:
     container_name: wordpress
-    build: ./requirements/wordpress
+    build: requirements/wordpress
     env_file:
       - .env
     depends_on:
@@ -25,7 +25,7 @@ services:
 
   nginx:
     container_name: nginx
-    build: ./requirements/nginx
+    build: requirements/nginx
     env_file:
       - .env
     ports:

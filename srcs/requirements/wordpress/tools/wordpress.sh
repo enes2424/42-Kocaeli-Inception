@@ -8,7 +8,7 @@ chown -R www-data:www-data /run/php
 touch /run/php/php7.4-fpm.pid
 
 if [ ! -f ctrl ]; then
-	rm -rf ./*
+	rm -rf *
 
 	touch ctrl
 

@@ -1,4 +1,4 @@
-COMPOSE_FILE=./srcs/docker-compose.yml
+COMPOSE_FILE=srcs/docker-compose.yml
 
 all:
 	@ls srcs/requirements/tools/original_hosts || (cp /etc/hosts srcs/requirements/tools/original_hosts && cp srcs/requirements/tools/hosts /etc/hosts) || true
@@ -7,7 +7,7 @@ all:
 
 down:
 	@(ls srcs/requirements/tools/original_hosts && cp srcs/requirements/tools/original_hosts /etc/hosts && rm srcs/requirements/tools/original_hosts) || true
-	@docker-compose -f $(COMPOSE_FILE) down --volume
+	@docker-compose -f $(COMPOSE_FILE) down
 
 reup: down all
 
