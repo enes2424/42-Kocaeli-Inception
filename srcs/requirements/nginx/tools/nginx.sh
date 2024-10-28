@@ -12,4 +12,4 @@ sed -i "s|!DOMAIN_NAME!|$DOMAIN_NAME|g" /etc/nginx/sites-enabled/default
 sed -i "s|!CERTIFICATE!|$CERTIFICATE|g" /etc/nginx/sites-enabled/default
 sed -i "s|!PRIVATE_KEY!|$PRIVATE_KEY|g" /etc/nginx/sites-enabled/default
 
-exec nginx  -g 'daemon off;'
+exec nginx -g 'daemon off;'

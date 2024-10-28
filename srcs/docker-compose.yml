@@ -5,7 +5,7 @@ services:
     env_file:
       - .env
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - mariadb:/var/lib/mysql
     networks:
       - inception
     restart: on-failure
@@ -17,7 +17,6 @@ services:
       - .env
     depends_on:
       - mariadb
-      - nginx
     volumes:
       - wordpress:/var/www/html
     networks:
@@ -32,7 +31,7 @@ services:
     ports:
       - "443:443"
     depends_on:
-      - mariadb
+      - wordpress
     volumes:
       - wordpress:/var/www/html
     networks:
@@ -52,6 +51,6 @@ volumes:
       o: bind
       device: /home/eates/data/wordpress
 
-  mariadb_data:
-    name: mariadb_data
+  mariadb:
+    name: mariadb
     driver: local
