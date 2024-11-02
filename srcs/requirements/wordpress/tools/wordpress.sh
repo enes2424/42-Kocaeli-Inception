@@ -10,8 +10,6 @@ touch /run/php/php7.4-fpm.pid
 if [ ! -f ctrl ]; then
 	rm -rf *
 
-	touch ctrl
-
 	# WordPress çekirdeğini indir
 	wp core download --allow-root
 
@@ -36,6 +34,8 @@ if [ ! -f ctrl ]; then
 		${WORDPRESS_USER} \
 		${WORDPRESS_EMAIL} \
 		--user_pass=${WORDPRESS_EMAIL}
+
+  	touch ctrl
 fi
 
 exec php-fpm7.4 --nodaemonize
