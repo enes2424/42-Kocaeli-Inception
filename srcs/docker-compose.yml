@@ -8,7 +8,7 @@ services:
       - mariadb:/var/lib/mysql
     networks:
       - inception
-    restart: on-failure
+    restart: unless-stopped
 
   wordpress:
     container_name: wordpress
@@ -21,7 +21,7 @@ services:
       - wordpress:/var/www/html
     networks:
       - inception
-    restart: on-failure
+    restart: unless-stopped
 
   nginx:
     container_name: nginx
@@ -36,7 +36,7 @@ services:
       - wordpress:/var/www/html
     networks:
       - inception
-    restart: on-failure
+    restart: unless-stopped
 
 networks:
   inception:
@@ -48,9 +48,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      o: rbind
+      o: bind
       device: /home/eates/data/wordpress
 
   mariadb:
     name: mariadb
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/eates/data/mariadb

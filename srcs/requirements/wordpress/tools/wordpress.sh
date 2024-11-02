@@ -35,7 +35,7 @@ if [ ! -f ctrl ]; then
 		${WORDPRESS_EMAIL} \
 		--user_pass=${WORDPRESS_EMAIL}
 
-  	touch ctrl
+	touch ctrl
 fi
 
 exec php-fpm7.4 --nodaemonize
