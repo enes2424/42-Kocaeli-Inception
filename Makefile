@@ -7,15 +7,14 @@ all:
 
 down:
 	@(ls srcs/requirements/tools/original_hosts && cp srcs/requirements/tools/original_hosts /etc/hosts && rm srcs/requirements/tools/original_hosts) || true
-	@docker-compose -f $(COMPOSE_FILE) down
+	@docker-compose -f $(COMPOSE_FILE) down --volumes
 
 reup: down all
 
 re: clean all
 
-clean:
-	@(ls srcs/requirements/tools/original_hosts && cp srcs/requirements/tools/original_hosts /etc/hosts && rm srcs/requirements/tools/original_hosts) || true
-	@docker-compose -f $(COMPOSE_FILE) down --volumes
+clean: down
 	@rm -rf /home/eates/data/wordpress
 	@rm -rf /var/lib/docker/volumes/*
 	@docker system prune -af
+
